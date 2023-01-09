@@ -197,6 +197,8 @@ def main(score, balls):
             ball.rect.y = HEIGHT // 2 - 5
             ball.velocity[1] = ball.velocity[1]
             balls += 1
+            paddle.rect.x = WIDTH // 2 - paddle_width // 2
+            paddle.rect.y = HEIGHT - 65
             if balls == 4:
                 font = pygame.font.Font("C:\Windows\Fonts\Arial.ttf",70)
                 text = font.render("GAME OVER", 1, WHITE)
@@ -210,6 +212,8 @@ def main(score, balls):
             ball.rect.x += ball.velocity[0]
             ball.rect.y -= ball.velocity[1]
             ball.bounce()
+            ball.rect.y -= 10
+
 
         brick_collision_list = pygame.sprite.spritecollide(ball, all_bricks, False)
         for brick in brick_collision_list:
